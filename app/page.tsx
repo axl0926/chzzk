@@ -19,11 +19,11 @@ export default function Home() {
 
     let category: string[] = ["All"];
     response?.content.data.forEach((data: { [key: string]: any }) => {
-        const liveCategoryValue = data.liveCategoryValue || "카테고리 없음";
-        if (!category.includes(liveCategoryValue)) {
-            category.push(liveCategoryValue);
+        if (!category.includes( data.liveCategoryValue)) {
+            category.push( data.liveCategoryValue);
         }
     });
+    category.push("카테고리 없음");
 
     return (
         <main className="w-[1260px] py-5">
