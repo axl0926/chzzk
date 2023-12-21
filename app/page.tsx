@@ -27,10 +27,10 @@ export default function Home() {
 
     return (
         <main className="w-[1260px] py-5">
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
                 {category.map((category, i) => {
                     return (
-                        <div key={i} className="bg-[rgba(46,48,51,.6)] rounded-[8px] p-[10px_20px] text-[#9da5b6] font-extrabold text-[20px] leading-[20px] hover:bg-[rgba(60,61,65,0.6)] cursor-pointer" onClick={() => setSelectedCategory(category)}>
+                        <div key={i} className="bg-[rgba(46,48,51,.6)] rounded-[8px] p-[10px_20px] text-[#9da5b6] font-extrabold text-[20px] leading-[20px] hover:bg-[rgba(60,61,65,0.6)] cursor-pointer whitespace-nowrap " onClick={() => setSelectedCategory(category)}>
                             {category}
                         </div>
                     );

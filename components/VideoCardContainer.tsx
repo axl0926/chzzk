@@ -1,11 +1,15 @@
+"use client"
+import{ useState } from 'react';
+
 export default function VideoCardContainer({ data }: { [key: string]: any }) {
+    const [isLoading, setIsLoading] = useState(true);
     return (
         <div className="flex flex-col gap-3 m-[15px_7px] w-[300px]">
             <a href={`https://chzzk.naver.com/live/${data.channel.channelId}`} className=" relative">
-                <img src={data.liveImageUrl.replace("{type}", "480")} className="  rounded-xl " />
+                <img src={ isLoading? '/bg-video.png':data.liveImageUrl.replace("{type}", "480")} onLoad={()=>setIsLoading(false)} className="  rounded-xl " />
                 <div className="flex items-center absolute left-[6px] top-[6px] h-6  gap-2">
-                    <span className=" bg-red-600 rounded-sm pl-[5px] pr-[5px] text-white font-semibold  p-[2px] h-[18px] text-[12px] leading-[13px]">LIVE</span>
-                    <span className=" bg-[rgba(0,0,0,.8)] rounded-sm pl-[5px] pr-[5px] text-white font-semibold p-[2px] h-[18px] text-[12px] leading-[13px]">{data.concurrentUserCount}명 시청</span>
+                    <span className=" bg-red-600 rounded-sm pl-[5px] pr-[5px] text-white font-semibold  p-[2px] h-[18px] text-[12px] leading-[16px]">LIVE</span>
+                    <span className=" bg-[rgba(0,0,0,.8)] rounded-sm pl-[5px] pr-[5px] text-white font-semibold p-[2px] h-[18px] text-[12px] leading-[16px]">{data.concurrentUserCount}명 시청</span>
                 </div>
             </a>
             <div className="flex flex-row gap-3 ">
