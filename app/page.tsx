@@ -40,7 +40,6 @@ export default function Home() {
                 {response?.content.data
                     .filter((data: { [key: string]: any }) => selectedCategory === "All" || data.liveCategoryValue === selectedCategory || (selectedCategory === "카테고리 없음" && data.liveCategoryValue == ""))
                     .map((data: { [key: string]: any }, i) => {
-                        console.log(response);
                         return <VideoCardContainer data={data} key={i}></VideoCardContainer>;
                     })}
             </div>
