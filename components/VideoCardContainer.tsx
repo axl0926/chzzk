@@ -26,9 +26,11 @@ export default function VideoCardContainer({ data }: { [key: string]: any }) {
                             <span className="text-[13px] leading-[24px] px-1">{data.channel.channelName}</span>
                         </div>
                     </a>
-                    <div>
-                        <span className=" bg-[rgba(46,48,51,.6)] rounded-[5px] p-[4px_6px] text-[#9da5b6] font-extrabold text-[11px] leading-[12px]">{data.liveCategoryValue}</span>
-                    </div>
+                    {data.liveCategoryValue !== "" && (
+                        <div>
+                            <span className=" bg-[rgba(46,48,51,.6)] rounded-[5px] p-[4px_6px] text-[#9da5b6] font-extrabold text-[11px] leading-[12px]">{data.liveCategoryValue === "" ? null : data.liveCategoryValue}</span>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
