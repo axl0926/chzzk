@@ -12,19 +12,19 @@ export default function VideoCardContainer({ data }: { [key: string]: any }) {
                     <span className="bg-black bg-opacity-80 rounded-sm pl-1 pr-1 text-white font-semibold py-0.5 h-4 text-sm leading-4">{data.concurrentUserCount}명 시청</span>
                 </div>
             </a>
-            <div className="flex flex-row ">
-                <div className="w-1/5 md:w-1/6">
+            <div className="flex flex-row gap-3 md:gap-2">
+                <div className="w-1/5 md:w-1/4">
                     <a href={`https://chzzk.naver.com/${data.channel.channelId}`}>
-                        <div className="min-w-full min-h-full overflow-hidden">
-                            <img src={data.channel.channelImageUrl || "https://ssl.pstatic.net/cmstatic/nng/img/img_anonymous_square_gray_opacity2x.png?type=f120_120_na"} className=" rounded-full min-w-full min-h-full object-cover object-center" />
+                        <div className="w-full rounded-full aspect-square overflow-hidden">
+                            <img src={data.channel.channelImageUrl || "https://ssl.pstatic.net/cmstatic/nng/img/img_anonymous_square_gray_opacity2x.png?type=f120_120_na"} className="min-w-full min-h-full object-cover object-center" />
                         </div>
                     </a>
                 </div>
 
-                <div className="font-bold w-4/5 md:w-5/6">
+                <div className="font-bold w-full">
                     <a href={`https://chzzk.naver.com/live/${data.channel.channelId}`}>
                         <div className="text-[#dfe2ea] text-sm px-1 w-4/5 line-clamp-2">{data.liveTitle}</div>
-                    </a>{" "}
+                    </a>
                     <a href={`https://chzzk.naver.com/${data.channel.channelId}`} className=" ">
                         <div className="hover:bg-[hsla(0,0%,100%,.1)] hover:rounded-md w-fit">
                             <span className="text-sm px-1">{data.channel.channelName}</span>
