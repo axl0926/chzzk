@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function VideoCardContainer({ data }: { [key: string]: any }) {
     const [isLoading, setIsLoading] = useState(true);
     return (
-        <div className="flex flex-col gap-3 p-2 w-1/2  md:w-1/3 lg:w-1/4 xl:w-1/5 box-border">
+        <div className="flex flex-col gap-3 p-2 w-1/2  md:w-1/3 lg:w-1/4 xl:w-1/5 box-border hover:scale-110 transition-transform">
             <a href={`https://chzzk.naver.com/live/${data.channel.channelId}`} className=" relative">
                 <img src={isLoading ? "/bg-video.png" : data.liveImageUrl.replace("{type}", "480")} onLoad={() => setIsLoading(false)} className="rounded-xl" />
                 <div className="flex items-center absolute left-1.5 top-1.5 h-6 gap-2">
