@@ -43,7 +43,7 @@ export default function Home() {
                     data
                         .filter((data: { [key: string]: any }) => selectedCategory === "All" || data.liveCategoryValue === selectedCategory || (selectedCategory === "카테고리 없음" && data.liveCategoryValue == ""))
                         .map((data: { [key: string]: any }, i) => {
-                            return <VideoCardContainer data={data} key={i} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"></VideoCardContainer>;
+                            return <VideoCardContainer data={data} key={i}></VideoCardContainer>;
                         })}
             </div>
         </main>
