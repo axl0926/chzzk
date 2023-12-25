@@ -1,12 +1,11 @@
 "use client";
 import { useState } from "react";
+import Category from "@/components/Category";
 import VideoCardContainer from "@/components/VideoCardContainer";
-
 import { useQuery } from "react-query";
-
+import CategoryMobile from "@/components/CategoryMobile";
 export default function Home() {
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
-
     type Lives = any[];
     const { data, status } = useQuery<Lives, Error>({
         queryKey: [`fetch`],
@@ -18,33 +17,33 @@ export default function Home() {
         refetchOnWindowFocus: false,
     });
 
-    let category: string[] = ["All"];
+    let category: { name: string; count: number | null }[] = [{ name: "All", count: null }];
     if (status === "success") {
-        data.forEach((data: { [key: string]: any }) => {
-            if (data.liveCategoryValue !== "" && !category.includes(data.liveCategoryValue)) {
-                category.push(data.liveCategoryValue);
-            }
-        });
+        category.push(
+            ...Object.entries(
+                data.reduce((acc: { [key: string]: number }, item) => {
+                    const category = item.liveCategoryValue || "카테고리 없음";
+                    acc[category] = (acc[category] || 0) + 1;
+                    return acc;
+                }, {})
+            )
+                .map(([category, count]): { name: string; count: number } => ({ name: category, count: count }))
+                .sort((a, b) => b.count - a.count)
+        );
     }
 
-    category.push("카테고리 없음");
     return (
-        <main className="w-[1260px] py-5">
+        <main className="w-full md:max-w-[70vw] py-0 md:py-5">
             <div className="flex gap-2 flex-wrap">
-                {category.map((category, i) => {
-                    return (
-                        <div key={i} className="bg-[rgba(46,48,51,.6)] rounded-[8px] p-[10px_20px] text-[#9da5b6] font-extrabold text-[20px] leading-[20px] hover:bg-[rgba(60,61,65,0.6)] cursor-pointer whitespace-nowrap " onClick={() => setSelectedCategory(category)}>
-                            {category}
-                        </div>
-                    );
-                })}
+                <CategoryMobile category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+                <Category category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             </div>
-            <div className="grid grid-cols-4">
+            <div className="flex flex-wrap justify-center md:justify-normal">
                 {status === "success" &&
                     data
                         .filter((data: { [key: string]: any }) => selectedCategory === "All" || data.liveCategoryValue === selectedCategory || (selectedCategory === "카테고리 없음" && data.liveCategoryValue == ""))
                         .map((data: { [key: string]: any }, i) => {
-                            return <VideoCardContainer data={data} key={i}></VideoCardContainer>;
+                            return <VideoCardContainer data={data} key={i} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"></VideoCardContainer>;
                         })}
             </div>
         </main>
