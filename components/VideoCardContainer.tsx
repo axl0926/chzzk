@@ -6,7 +6,7 @@ export default function VideoCardContainer({ data }: { [key: string]: any }) {
     return (
         <div className="flex flex-col gap-3 p-2 w-1/2  md:w-1/3 lg:w-1/4 xl:w-1/5 box-border hover:scale-110 transition-transform">
             <a href={`https://chzzk.naver.com/live/${data.channel.channelId}`} className=" relative">
-                <img src={isLoading ? "/bg-video.png" : data.liveImageUrl.replace("{type}", "480")} onLoad={() => setIsLoading(false)} className="rounded-xl" />
+                <img src={isLoading ? "/bg-video.png" : data.liveImageUrl && data.liveImageUrl.replace("{type}", "480")} onLoad={() => setIsLoading(false)} className="rounded-xl" />
                 <div className="flex items-center absolute left-1.5 top-1.5 h-6 gap-2">
                     <span className="bg-red-600 rounded-sm pl-1 pr-1 text-white font-semibold py-0.5 h-4 text-sm leading-4">LIVE</span>
                     <span className="bg-black bg-opacity-80 rounded-sm pl-1 pr-1 text-white font-semibold py-0.5 h-4 text-sm leading-4">{data.concurrentUserCount}명 시청</span>
