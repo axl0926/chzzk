@@ -14,9 +14,8 @@ export default function Category({ category, selectedCategory, setSelectedCatego
                     </div>
                 ))}
             </div>
-           
-                <button className={`w-8 h-8 border-b-8 border-r-8 rotate-45 transition-all  duration-500 ${isExpanded ? "rotate-[225deg]" : "rotate-45"}`} onClick={() => setIsExpanded(!isExpanded)}></button>
-           
+
+            <button className={`hidden md:block w-8 h-8 border-b-8 border-r-8 rotate-45 transition-all  duration-500 ${isExpanded ? "rotate-[225deg]" : "rotate-45"}`} onClick={() => setIsExpanded(!isExpanded)}></button>
         </>
     );
 }

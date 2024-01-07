@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-
 export default function VideoCardContainer({ data }: { [key: string]: any }) {
     const [isLoading, setIsLoading] = useState(true);
     const adultLiveImageUrl = 'https://ssl.pstatic.net/static/nng/glive/resource/p/static/media/image_age_restriction.c04b98f818ed01f04be9.png';
     return (
-        <div className="flex flex-col gap-3 p-2 w-1/2  md:w-1/3 lg:w-1/4 xl:w-1/5 box-border hover:scale-110 transition-transform">
+        // <div className="flex flex-col gap-3 p-2 w-1/2  md:w-1/3 lg:w-1/4 xl:w-1/5 box-border hover:scale-110 transition-transform">
+        <div className="flex flex-col gap-3 p-2 box-border hover:scale-110 transition-transform">
             <a href={`https://chzzk.naver.com/live/${data.channel.channelId}`} className=" relative">
-                <img src={isLoading ? "/bg-video.png" : data.liveImageUrl ? data.liveImageUrl.replace("{type}", "480") : data.adult && adultLiveImageUrl } onLoad={() => setIsLoading(false)} className="rounded-xl" />
+                <img src={isLoading ? "/bg-video.png" : data.liveImageUrl ? data.liveImageUrl.replace("{type}", "480") : data.adult && adultLiveImageUrl }  loading="lazy" onLoad={() => setIsLoading(false)} className="rounded-xl" />
                 <div className="flex items-center absolute left-1.5 top-1.5 h-6 gap-2">
                     <span className="bg-red-600 rounded-sm pl-1 pr-1 text-white font-semibold py-0.5 h-4 text-sm leading-4">LIVE</span>
                     <span className="bg-black bg-opacity-80 rounded-sm pl-1 pr-1 text-white font-semibold py-0.5 h-4 text-sm leading-4">{data.concurrentUserCount}명 시청</span>
@@ -17,7 +17,7 @@ export default function VideoCardContainer({ data }: { [key: string]: any }) {
                 <div className="w-1/5 md:w-1/4">
                     <a href={`https://chzzk.naver.com/${data.channel.channelId}`}>
                         <div className="w-full rounded-full aspect-square overflow-hidden">
-                            <img src={data.channel.channelImageUrl || "https://ssl.pstatic.net/cmstatic/nng/img/img_anonymous_square_gray_opacity2x.png?type=f120_120_na"} className="min-w-full min-h-full object-cover object-center" />
+                            <img src={data.channel.channelImageUrl || "https://ssl.pstatic.net/cmstatic/nng/img/img_anonymous_square_gray_opacity2x.png?type=f120_120_na"}  loading="lazy" className="min-w-full min-h-full object-cover object-center" />
                         </div>
                     </a>
                 </div>
