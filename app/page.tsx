@@ -80,10 +80,10 @@ export default function Home() {
                 <CategoryMobile category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                 <Category category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             </div>
-            <div className=" md:justify-normal w-full h-screen">
+            <div className=" md:justify-normal w-full h-screen  md:pt-32">
                 {status === "success" && (
                     <WindowScroller>
-                        {({ height, isScrolling, onChildScroll }) => (
+                        {({ height, isScrolling, onChildScroll, scrollTop }) => (
                             <AutoSizer disableHeight>
                                 {({ width }) => (
                                     <Grid
@@ -94,7 +94,7 @@ export default function Home() {
                                         rowCount={Math.ceil(filteredData.length / columnCount)}
                                         rowHeight={300}
                                         columnWidth={width / columnCount}
-                                        scrollTop={0}
+                                        scrollTop={scrollTop}
                                         onScroll={onChildScroll}
                                         cellRenderer={({ columnIndex, rowIndex, key, style }) => {
                                             const index = rowIndex * columnCount + columnIndex;
