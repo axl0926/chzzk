@@ -76,11 +76,11 @@ export default function Home() {
     }
     return (
         <main className="w-full md:max-w-[70vw] py-0 md:py-5">
-            <div className="flex gap-1 flex-col items-center pb-5">
+            <div className="flex gap-1 flex-col items-center">
                 <CategoryMobile category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                 <Category category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             </div>
-            <div className=" md:justify-normal w-full h-screen  md:pt-32">
+            <div className=" md:justify-normal w-full h-screen">
                 {status === "success" && (
                     <WindowScroller>
                         {({ height, isScrolling, onChildScroll, scrollTop }) => (
