@@ -83,7 +83,7 @@ export default function Home() {
             <div className=" md:justify-normal w-full h-screen">
                 {status === "success" && (
                     <WindowScroller>
-                        {({ height, isScrolling, onChildScroll, scrollTop }) => (
+                        {({ height, isScrolling, onChildScroll }) => (
                             <AutoSizer disableHeight>
                                 {({ width }) => (
                                     <Grid
@@ -94,7 +94,7 @@ export default function Home() {
                                         rowCount={Math.ceil(filteredData.length / columnCount)}
                                         rowHeight={300}
                                         columnWidth={width / columnCount}
-                                        scrollTop={scrollTop}
+                                        scrollTop={0}
                                         onScroll={onChildScroll}
                                         cellRenderer={({ columnIndex, rowIndex, key, style }) => {
                                             const index = rowIndex * columnCount + columnIndex;
