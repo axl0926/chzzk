@@ -13,7 +13,7 @@ export default function Home() {
             const response = await fetch(`/api/getLives`);
             return response.json();
         },
-        refetchInterval: 60000,
+        refetchInterval: 300000,
         refetchOnWindowFocus: false,
     });
 
@@ -34,7 +34,7 @@ export default function Home() {
 
     return (
         <main className="w-full md:max-w-[70vw] py-0 md:py-5">
-            <div className="flex gap-2 flex-wrap">
+            <div className="flex gap-1 flex-col items-center pb-5">
                 <CategoryMobile category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                 <Category category={category} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             </div>
